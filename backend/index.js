@@ -1,11 +1,12 @@
-import express from 'express'
+import express from 'express';
+import products from './routes/products/index.js'
+
 
 const app = express()
 const PORT = process.env.PORT
 
 
 // This is the main file
-
 
 
 // Create a server
@@ -15,4 +16,8 @@ app.listen(PORT, () => {
 
 // Initialize connection to mongodb via mongodb url
 
+
 // Declare routes
+app.use(express.json())
+
+app.use('/', products)
