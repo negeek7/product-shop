@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 // Initialize connection to mongodb via mongodb url
 async function connectToDb() {
     try {
-        await mongoose.connect(mongourl + '/shop')
+        await mongoose.connect(mongourl, {dbName: 'shop'})
         console.log("Connected to Database ✔")
     } catch (error) {
         console.log("Error connecting to database", error)
