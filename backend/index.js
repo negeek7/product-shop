@@ -1,6 +1,7 @@
 import express from 'express';
 import products from './routes/products/index.js'
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 
 const app = express()
@@ -27,8 +28,13 @@ async function connectToDb() {
     }
 }
 
+let corsOptions = {
+    credentials: true,
+    origin: ['http://localhost:5173']
+}
 
 // Declare routes
 app.use(express.json())
+app.use(cors(corsOptions))
 
 app.use('/', products)
