@@ -10,11 +10,13 @@ function App() {
     <>
     <BrowserRouter >
     <NavBar />
+    <div className="mx-24 mt-8 border-2 border-cyan-600">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+    </div>
     </BrowserRouter>
     </>
   )
