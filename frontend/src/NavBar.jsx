@@ -12,8 +12,8 @@ function NavBar() {
                 <input className="bg-white rounded-lg py-1 px-2" type="text" placeholder='Search Items...'/>
             </div>
             <div className='flex row items-center gap-4 text-lg'>
-                <p className="font-semibold">Login</p>
-                <p className="font-semibold">Cart</p>
+                <p className="font-semibold cursor-pointer" onClick={() => navigate('/login')}>Login</p>
+                <p className="font-semibold cursor-pointer" onClick={() => navigate('/cart')}>Cart</p>
             </div>
         </div>
     </div>
