@@ -8,16 +8,17 @@ const router = express.Router()
 // Get all products
 router.get('/products', async (req, res) => {
     try {
-        const products = await Product.find()
-        const pageNum = req.query.pageNum ? parseInt(req.query.pageNum) : 1
+        const totalProducts = await Product.countDocuments()
+        console.log(totalProducts, "TOTAL PRODUCTS")
+
+        const page = req.query.page ? parseInt(req.query.page) : 1
         const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 6
-        console.log(pageSize, pageNum, "pageSizepageSize")
-        if(pageSize && pageNum) {
-            let startIndex = (pageNum - 1) * pageSize
-            let endIndex = (pageNum - 1) * pageSize
-        }
-        if (!products) return res.status(400).send("Something went wrong, try again!")
-        res.status(200).json({ products, status: "Success", length: products.length})
+        const totalPages = Math.ceil(totalProducts / pageSize)
+
+        let skip = (page - 1) * pageSize 
+
+        let products = await Product.find().skip(skip).limit(pageSize)
+        res.status(200).json({products, totalPages})
     } catch (error) {
         res.status(400).send("Something went wrong, try again!")
         console.log("Error fetching products", error)
