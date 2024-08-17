@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import useFetch from '../hooks/useFetch'
 
 function Home() {
 
@@ -47,12 +46,14 @@ function Home() {
 
       <button
         onClick={() => handlePagination('previous')}
-      >
+        disabled={pageNum === 1}
+        >
         Previous
       </button>
 
       <button
         onClick={() => handlePagination('next')}
+        disabled={pageNum === totalPages}
       >
         Next
       </button>
