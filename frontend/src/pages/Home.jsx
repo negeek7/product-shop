@@ -44,7 +44,7 @@ function Home() {
   return (
     <div>
 
-      <div classN>
+      <div className={}>
         {
           productList.map(product => {
             <ProductTile product={product} />
