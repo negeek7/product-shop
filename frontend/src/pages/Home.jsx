@@ -42,7 +42,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-10 mb-4">
 
       <div className={"grid grid-flow-row grid-cols-4 gap-y-12"}>
         {
@@ -52,19 +52,28 @@ function Home() {
         }
       </div>
 
-      <button
-        onClick={() => handlePagination('previous')}
-        disabled={pageNum === 1}
-        >
-        Previous
-      </button>
 
-      <button
-        onClick={() => handlePagination('next')}
-        disabled={pageNum === totalPages}
-      >
-        Next
-      </button>
+      <div className="flex flex-col justify-center gap-2">
+      <span className="text-gray-500 text-sm text-center">Showing page {pageNum} of {totalPages}</span>
+        <div className="flex justify-center gap-12">
+        <button
+          onClick={() => handlePagination('previous')}
+          disabled={pageNum === 1}
+          className="focus:outline-none"
+          >
+          Previous
+        </button>
+
+        <button
+          onClick={() => handlePagination('next')}
+          disabled={pageNum === totalPages}
+          className="focus:outline-none"
+        >
+          Next
+        </button>
+
+        </div>
+      </div>
 
 
     </div>
