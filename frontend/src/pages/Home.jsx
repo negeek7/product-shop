@@ -8,7 +8,7 @@ function Home() {
   const [totalPages, setTotalPages] = useState(null)
   const [isFetchError, setIsFetchError] = useState(false)
 
-  console.log(productList)
+  console.log(productList, "productList")
   console.log(totalPages)
   console.log(pageNum)
 
@@ -44,11 +44,11 @@ function Home() {
   return (
     <div>
 
-      <div className={}>
+      <div className={"flex gap-16 flex-wrap px-24 border-2 border-red-500"}>
         {
-          productList.map(product => {
+          productList && productList.map(product => (
             <ProductTile product={product} />
-          })
+          ))
         }
       </div>
 

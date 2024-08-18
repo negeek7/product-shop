@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import sampleimg from '../assets/pat-taylor-12V36G17IbQ-unsplash.jpg'
 
 function ProductTile({ product }) {
 
@@ -6,23 +7,30 @@ function ProductTile({ product }) {
 
 
   return (
-    <div className="h-36 border-2 border-red-900 rounded-md p-2">
-      <image className="h-2/5"  src=""/>
+    <div className="relative flex flex-col h-96 pb-2 border-2 border-red-900 rounded-md cursor-pointer">
 
-      <p>{product.name}</p>
-      {
-        product.features && product.features.map(feature => {
-          <p>{feature}</p>
-        })
-      }
+      {/* top segement */}
+      <div className="flex-1">
+        <div className="h-3/5 relative border-2 border-green-400 w-full rounded-md">
+          {/* <img src={sampleimg} className="h-2/4 w-full object-contain" /> */}
+        </div>
 
-      <p>{price}</p>
+        <div className="py-2 px-4">
+          <p>{product.name}</p>
 
-      <div className="flex flex-col gap-4">
-        <span>-</span>
-        <span>{addCount}</span>
-        <span>+</span>
+          {
+            product.features && product.features.map(feature => (
+              <p>{feature}</p>
+            ))
+          }
+
+          <p>{product.price}</p>
+        </div>
       </div>
+
+
+      {/* bottom segement */}
+      <button className="mx-2">Add to Cart</button>
 
     </div>
   )
