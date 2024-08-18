@@ -18,7 +18,7 @@ function Home() {
 
   async function fetchData() {
     try {
-      let result = await fetch(`http://localhost:8001/products?page=${pageNum}&pageSize=${6}`)
+      let result = await fetch(`${import.meta.env.VITE_LOCAL_API_URL}/products?page=${pageNum}&pageSize=${6}`)
       if (!result.ok) return setIsFetchError(true)
       else {
         result = await result.json()

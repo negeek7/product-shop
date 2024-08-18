@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import NavBar from './NavBar'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
+import Product from './pages/Product'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </div>
       {/* <Footer /> */}
