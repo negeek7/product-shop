@@ -44,7 +44,7 @@ function Home() {
   return (
     <div>
 
-      <div className={"flex gap-16 flex-wrap px-24 border-2 border-red-500"}>
+      <div className={"grid grid-flow-row grid-cols-4 gap-y-12"}>
         {
           productList && productList.map(product => (
             <ProductTile product={product} />

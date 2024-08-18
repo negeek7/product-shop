@@ -7,12 +7,15 @@ function ProductTile({ product }) {
 
 
   return (
-    <div className="relative flex flex-col h-96 pb-2 border-2 border-red-900 rounded-md cursor-pointer">
+    <div 
+      className="relative flex flex-col pb-2 rounded-md cursor-pointer border-none shadow-xl"
+      style={{width:"300px"}}
+    >
 
       {/* top segement */}
       <div className="flex-1">
-        <div className="h-3/5 relative border-2 border-green-400 w-full rounded-md">
-          {/* <img src={sampleimg} className="h-2/4 w-full object-contain" /> */}
+        <div className="h-52 relative w-full rounded-md">
+          <img src={sampleimg} style={{height:"100%", width:"100%", objectFit: "cover"}} />
         </div>
 
         <div className="py-2 px-4">

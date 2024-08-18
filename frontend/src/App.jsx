@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter >
     <div className="flex flex-col gap-8 min-h-screen">
       <NavBar />
-      <div className="mx-24 border-2 border-cyan-600 flex-1">
+      <div className="mx-24 flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
