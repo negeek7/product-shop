@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import ProductTile from '../component/ProductTile'
 
 function Home() {
 
@@ -43,6 +44,13 @@ function Home() {
   return (
     <div>
 
+      <div classN>
+        {
+          productList.map(product => {
+            <ProductTile product={product} />
+          })
+        }
+      </div>
 
       <button
         onClick={() => handlePagination('previous')}

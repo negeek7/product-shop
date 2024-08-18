@@ -9,13 +9,16 @@ function App() {
   return (
     <>
     <BrowserRouter >
-    <NavBar />
-    <div className="mx-24 mt-8 border-2 border-cyan-600">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+    <div className="flex flex-col gap-8 min-h-screen">
+      <NavBar />
+      <div className="mx-24 border-2 border-cyan-600 flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </div>
+      {/* <Footer /> */}
     </div>
     </BrowserRouter>
     </>
