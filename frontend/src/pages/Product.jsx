@@ -12,7 +12,6 @@ function Product() {
     const [isLoading, setIsLoading] = useState(true)
     const [fetchError, setFetchError] = useState(false)
     
-    
     console.log(params.id, "params.id")
 
     useEffect(() => {
@@ -55,9 +54,6 @@ function Product() {
             </div>
         )
     }
-
-
-
 
 
   return (
