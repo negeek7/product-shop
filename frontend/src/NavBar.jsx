@@ -15,20 +15,20 @@ function NavBar() {
         }
     }, [searchTerm])
 
-    // const fetchSuggestions = async (term) => {
-    //     console.log("searching...")
-    //     try {
-    //         const response = await fetch(`${import.meta.env.VITE_LOCAL_API_URL}/products/search?term=${term}`)
-    //         if (!response.ok) {
-    //             throw new Error('Failed to fetch suggestions')
-    //         }
-    //         const data = await response.json()
-    //         setSuggestions(data.products)
-    //     } catch (error) {
-    //         console.error('Error fetching suggestions:', error)
-    //         setSuggestions([])
-    //     }
-    // }
+    const fetchSuggestions = async (term) => {
+        console.log("searching...")
+        try {
+            const response = await fetch(`${import.meta.env.VITE_LOCAL_API_URL}/products/search?term=${term}`)
+            if (!response.ok) {
+                throw new Error('Failed to fetch suggestions')
+            }
+            const data = await response.json()
+            setSuggestions(data.products)
+        } catch (error) {
+            console.error('Error fetching suggestions:', error)
+            setSuggestions([])
+        }
+    }
 
     return (
         <div className="w-full bg-blue-950 py-3 px-24">
