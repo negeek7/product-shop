@@ -6,7 +6,6 @@ import sampleimg from '../assets/pat-taylor-12V36G17IbQ-unsplash.jpg';
 
 function Product() {
 
-
     const params = useParams()
     const [product, setProduct] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -54,11 +53,6 @@ function Product() {
             </div>
         )
     }
-
-
-  return (
-    <div>This is product page</div>
-  )
 }
 
 export default Product

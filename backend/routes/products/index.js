@@ -40,6 +40,25 @@ router.get('/product/:id', async (req, res) => {
     }
 })
 
+
+router.get('/products/search', async (req, res) => {
+    console.log(req.query)
+    const searchTerm = req.query.term
+    try {
+        if(!searchTerm) return res.status(400).send("Provide search term")
+    
+        let products = await Product.find({name: {$regex: searchTerm, $options: 'i'}})
+    
+        if(products) {
+            res.status(200).json({products, status: "Success"})
+        }
+    } catch (error) {
+        res.status(500).send("Something went wrong")
+        console.log("Error fetching products", error)
+    }
+
+})
+
 router.get('/', (req, res) => {
     res.send("HELLOO!!")
 })
