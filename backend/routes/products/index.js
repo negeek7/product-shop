@@ -8,10 +8,17 @@ const router = express.Router()
 // Get all products
 router.get('/products', async (req, res) => {
     try {
-        const products = await Product.find()
-        console.log(products, "products")
-        if (!products) return res.status(400).send("Something went wrong, try again!")
-        res.status(200).json({ products, status: "Success" })
+        const totalProducts = await Product.countDocuments()
+        console.log(totalProducts, "TOTAL PRODUCTS")
+
+        const page = req.query.page ? parseInt(req.query.page) : 1
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 6
+        const totalPages = Math.ceil(totalProducts / pageSize)
+
+        let skip = (page - 1) * pageSize 
+
+        let products = await Product.find().skip(skip).limit(pageSize)
+        res.status(200).json({products, totalPages})
     } catch (error) {
         res.status(400).send("Something went wrong, try again!")
         console.log("Error fetching products", error)
@@ -31,6 +38,22 @@ router.get('/product/:id', async (req, res) => {
         res.status(400).send("Something went wrong, try again!")
         console.log("Error fetching products", error)
     }
+})
+
+
+router.get('/products/search', async (req, res) => {
+    console.log(req.query)
+    const searchTerm = req.query.term
+    try {
+        if(!searchTerm) return res.status(400).send("Provide search term")
+    
+        let products = await Product.find({name: {$regex: searchTerm, $options: 'i'}})
+        res.status(200).json({products, status: "Success"})
+    } catch (error) {
+        res.status(500).send("Something went wrong")
+        console.log("Error fetching products", error)
+    }
+
 })
 
 router.get('/', (req, res) => {
